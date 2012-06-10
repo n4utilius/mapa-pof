@@ -1,10 +1,19 @@
 {
-    "name": "application-name"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.8"
-    , "stylus": ">= 0.0.1"
-    , "jade": ">= 0.0.1"
+  "name": "mapa-pof",
+  "version": "0.0.1-8",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.8",
+    "stylus": ">= 0.0.1",
+    "jade": ">= 0.0.1",
+    "request": "2.9.x",
+    "jsdom": "0.2.x"
+  },
+  "subdomain": "mapa-pof",
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.6.x"
   }
 }

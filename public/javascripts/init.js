@@ -8,15 +8,13 @@ $(function(){
             'stroke-linejoin': 'round'
         },
 		arr = new Array();
-	
+
 	//setTimeout(function(){$("#info").fadeIn(2000)}, 500);
 
 	for (var state in paths) {
 		var obj = r.path(paths[state].path);
 		obj.attr(attributes);
 		arr[obj.id] = state;
-
-		base_url = "http://localhost:3000/reporte/";
 
 		var fijar_estado = false;		
 		obj
@@ -50,10 +48,10 @@ $(function(){
 				$("#protector_map").css("display", "inline");
 				$('html, body').animate({scrollTop:570}, 'slow');
 
-				url = "http://localhost:3000/reporte/" + state_name;
+				url = "http://mapa-pof.jit.su/reporte/" + state_name; //"http://localhost:3000/reporte/" + state_name
 				$.get(url, {}, function(data){
 					$("div#status").html(data);
-					$("div#status").slideDown(700);
+					$("div#status").slideDown(500);
 				})
 				fijar_estado = true;
 				return false;
@@ -83,7 +81,7 @@ $(function(){
 
 	$(window).scroll(function(){
 		scroll_top = $(this).scrollTop();
-		if(scroll_top <= 43){
+		if(scroll_top == 0){
 			$("#protector_map").css("display","none");
 			$("#status").slideUp("fast", function(){
 				$(this).css("display","none");
