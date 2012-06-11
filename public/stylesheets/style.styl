@@ -17,7 +17,6 @@ a
   float:left
   clear:both
   z-index:-1
-  margin-bottom: 10px
 
 #protector_map
   z-index:3
@@ -50,13 +49,36 @@ a
 	font-size:0.75em
 
 #map
-	background:url(../images/grid.jpg) repeat
+	background:url("../images/grid.jpg") repeat
 
 #status
   background: #3cc 
-  padding: 90px 20px 20px 40px
+  padding: 100px 20px 20px 40px
   width:790px
   display:none
+
+#status #go_home
+  position:absolute
+  z-index:8
+  margin-top:-90px
+  right:80px
+  text-align:center
+  font-size: 1.6em
+  color:#fff
+  width:150px
+  -moz-transform: scale(0.8)
+  -webkit-transform: scale(0.8)
+  -o-transform: scale(0.8)
+  -ms-transform: scale(0.8)
+  transform: scale(0.8)
+
+#status #go_home:hover 
+  -moz-transform: scale(0.9)
+  -webkit-transform: scale(0.9)
+  -o-transform: scale(0.9)
+  -ms-transform: scale(0.9)
+  transform: scale(0.9)
+  cursor:pointer
 
 #status div#balance
   display:block
@@ -102,13 +124,17 @@ a
   text-align:left
   font-family: 'Duru Sans'
 
-table#tabla_gastos td
+#status table#tabla_gastos td
   margin: 0px 10px 0px 0px
   font-size:1.3em
 
 #status div#cronologia
   display:block
 
-#cronologia ul li, #cronologia ul em  
+#status #cronologia ul li, #status #cronologia ul em  
   margin-bottom:5px
   font-size:1.2em
+
+#load
+  background: #65a6d1 url("../images/loading.gif") no-repeat center center
+  display:none

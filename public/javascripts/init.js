@@ -45,14 +45,23 @@ $(function(){
 				fijar_estado = false;
 				state_name = paths[arr[this.id]].name
 
-				$("#protector_map").css("display", "inline");
-				$('html, body').animate({scrollTop:570}, 'slow');
+				$("div#load").css("display", "inline");
 
-				url = "http://mapa-pof.jit.su/reporte/" + state_name; //"http://localhost:3000/reporte/" + state_name
+				$("#protector_map").css("display", "inline");
+				$('html, body').animate({scrollTop:570}, 'slow', function(){
+
+				url = /*"http://mapa-pof.jit.su/reporte/" + state_name; /*/"http://localhost:3000/reporte/" + state_name/**/
+				$("div#status").slideUp("slow")//, function(){
 				$.get(url, {}, function(data){
-					$("div#status").html(data);
-					$("div#status").slideDown(500);
+					//$("div#status").slideUp("fast", function(){
+						$("div#status").html(data);
+						$("div#status").slideDown(500, function(){
+							$("div#load").css("display", "none");
+						});
+					//});
 				})
+				//});
+				});
 				fijar_estado = true;
 				return false;
 			});
@@ -79,14 +88,15 @@ $(function(){
 		})();
 	}
 
+	$("div#go_home").live("click", function(e){
+		$('html, body').animate({scrollTop:0}, 'slow');
+	});
+
 	$(window).scroll(function(){
 		scroll_top = $(this).scrollTop();
 		if(scroll_top == 0){
 			$("#protector_map").css("display","none");
-			$("#status").slideUp("fast", function(){
-				$(this).css("display","none");
-				//$("#title_bar").html("<small>Pasa el cursor por los estados...</small>");
-			})
+			$(this).css("display","none");
 		}
 	})
 });

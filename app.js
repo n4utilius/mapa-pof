@@ -110,7 +110,11 @@
               }
               cronologia += "</ul>";
 
-              var html  = "<div id='balance'>";
+              var html  = "<div id='go_home'>";
+                  html += "  <img src='/images/mapa.png' />";
+                  html += "  <label> volver al mapa </label>";
+                  html += "</div>";
+                  html += "<div id='balance'>";
                   html +=   "<div id ='resumen'>";
                   html +=     "<div>";
                   html +=       "<h2>Transparencia y acceso a la Información</h2>";
