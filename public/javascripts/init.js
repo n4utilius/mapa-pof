@@ -9,8 +9,6 @@ $(function(){
         },
 		arr = new Array();
 
-	//setTimeout(function(){$("#info").fadeIn(2000)}, 500);
-
 	for (var state in paths) {
 		var obj = r.path(paths[state].path);
 		obj.attr(attributes);
@@ -46,27 +44,26 @@ $(function(){
 				state_name = paths[arr[this.id]].name
 
 				$("div#load").css("display", "inline");
-
 				$("#protector_map").css("display", "inline");
+				
 				$('html, body').animate({scrollTop:570}, 'slow', function(){
+					url = base_url() + "/reporte/" + state_name;
 
-				url = /*"http://mapa-pof.jit.su/reporte/" + state_name; /*/"http://localhost:3000/reporte/" + state_name/**/
-				$("div#status").slideUp("slow")//, function(){
-				$.get(url, {}, function(data){
-					//$("div#status").slideUp("fast", function(){
-						$("div#status").html(data);
-						$("div#status").slideDown(500, function(){
-							$("div#load").css("display", "none");
-						});
-					//});
-				})
-				//});
+					$("div#status").slideUp("slow")//, function(){
+					$.get(url, {}, function(data){
+							$("div#status").html(data);
+							$("div#status").slideDown(500, function(){
+								$("div#load").css("display", "none");
+							});
+					})
 				});
 				fijar_estado = true;
 				return false;
 			});
+	}
 
-		var normalize = (function() {
+	
+	var normalize = (function() {
 		  var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
 		      to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
 		      mapping = {};
@@ -85,19 +82,7 @@ $(function(){
 		      }
 		      return ret.join( '' ).replace( /[^-A-Za-z0-9]+/g, '-' ).toLowerCase();
 		  }		 
-		})();
-	}
+	})();
 
-	$("div#go_home").live("click", function(e){
-		$('html, body').animate({scrollTop:0}, 'slow');
-	});
-
-	$(window).scroll(function(){
-		scroll_top = $(this).scrollTop();
-		if(scroll_top == 0){
-			$("#protector_map").css("display","none");
-			$(this).css("display","none");
-		}
-	})
 });
 
