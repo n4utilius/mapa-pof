@@ -47,8 +47,7 @@ $(function(){
 				$("#protector_map").css("display", "inline");
 				
 				$('html, body').animate({scrollTop:570}, 'slow', function(){
-					url = base_url() + "/reporte/" + state_name;
-
+					url = base_url() + "/reporte/" + normalize(state_name);
 					$("div#status").slideUp("slow")//, function(){
 					$.get(url, {}, function(data){
 							$("div#status").html(data);
@@ -60,29 +59,29 @@ $(function(){
 				fijar_estado = true;
 				return false;
 			});
-	}
 
-	
-	var normalize = (function() {
-		  var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
-		      to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
-		      mapping = {};
-		 
-		  for(var i = 0, j = from.length; i < j; i++ )
-		      mapping[ from.charAt( i ) ] = to.charAt( i );
-		 
-		  return function( str ) {
-		      var ret = [];
-		      for( var i = 0, j = str.length; i < j; i++ ) {
-		          var c = str.charAt( i );
-		          if( mapping.hasOwnProperty( str.charAt( i ) ) )
-		              ret.push( mapping[ c ] );
-		          else
-		              ret.push( c );
-		      }
-		      return ret.join( '' ).replace( /[^-A-Za-z0-9]+/g, '-' ).toLowerCase();
-		  }		 
-	})();
+
+			var normalize = (function() {
+				  var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+				      to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+				      mapping = {};
+				 
+				  for(var i = 0, j = from.length; i < j; i++ )
+				      mapping[ from.charAt( i ) ] = to.charAt( i );
+				 
+				  return function( str ) {
+				      var ret = [];
+				      for( var i = 0, j = str.length; i < j; i++ ) {
+				          var c = str.charAt( i );
+				          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+				              ret.push( mapping[ c ] );
+				          else
+				              ret.push( c );
+				      }
+				      return ret.join( '' ).replace( /[^-A-Za-z0-9]+/g, '-' ).toLowerCase();
+				  }		 
+			})();
+	}
 
 });
 
